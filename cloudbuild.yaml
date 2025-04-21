@@ -50,11 +50,11 @@ steps:
       - 'us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/userservice:${SHORT_SHA}'
 
   # Step 5: Create config
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'k8s/base/config.yaml']
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=scalable-apps'
+#  - name: 'gcr.io/cloud-builders/kubectl'
+#    args: ['apply', '-f', 'k8s/base/config.yaml']
+#    env:
+#      - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
+#      - 'CLOUDSDK_CONTAINER_CLUSTER=scalable-apps'
 
   # Step 6: Apply K8s manifests
   - name: 'gcr.io/cloud-builders/kubectl'
