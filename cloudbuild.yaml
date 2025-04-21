@@ -75,7 +75,7 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=scalable-apps'
 
 images:
-  - 'us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/uservice:${SHORT_SHA}'
+  - 'us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/userservice:${SHORT_SHA}'
 
 options:
   logging: CLOUD_LOGGING_ONLY
