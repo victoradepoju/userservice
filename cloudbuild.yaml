@@ -40,7 +40,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/userservice:${SHORT_SHA}'
+      - 'us-central1-docker.pkg.dev/${PROJECT_ID}/group4-repo/userservice:${SHORT_SHA}'
       - '.'
 
   # Step 4: Docker push
