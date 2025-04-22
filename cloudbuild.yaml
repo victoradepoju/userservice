@@ -47,21 +47,21 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/userservice:${SHORT_SHA}'
+      - 'us-central1-docker.pkg.dev/${PROJECT_ID}/group4-repo/userservice:${SHORT_SHA}'
 
 #   Step 5: Create config
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/base/accounts-db.yaml']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=scalable-apps'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=group4-cluster'
 
   # Step 6: Apply K8s manifests
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/base/userservice1.yaml']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=scalable-apps'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=group4-cluster'
 
   # Step 7: Set image in deployment
   - name: 'gcr.io/cloud-builders/kubectl'
@@ -69,13 +69,14 @@ steps:
       - 'set'
       - 'image'
       - 'deployment/userservice'
-      - 'userservice=us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/userservice:${SHORT_SHA}'
+      - 'userservice=us-central1-docker.pkg.dev/${PROJECT_ID}/group4-repo/userservice:${SHORT_SHA}'
+      - '--namespace=group4-ns'
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=scalable-apps'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=group4-cluster'
 
 images:
-  - 'us-central1-docker.pkg.dev/${PROJECT_ID}/moniejoint-repo/userservice:${SHORT_SHA}'
+  - 'us-central1-docker.pkg.dev/${PROJECT_ID}/group4-repo/userservice:${SHORT_SHA}'
 
 options:
   logging: CLOUD_LOGGING_ONLY
