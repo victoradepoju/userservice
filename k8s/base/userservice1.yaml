@@ -137,3 +137,4 @@ spec:
               - key: jwtRS256.key.pub
                 path: publickey
             secretName: jwt-key
+
